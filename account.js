@@ -2,8 +2,8 @@ class Account {
     constructor(accountHolderName, initialDeposit) {
 
 this.accountHolderName;
-this.accountNumber;
-this.balance;
+this._accountNumber;
+this._balance;
 
 
         function createAccountNumber() {
@@ -14,11 +14,27 @@ this.balance;
             const invalidValue = ("Please provide a valid username and deposit");
             console.log(invalidValue);
         } else{
-            this.accountNumber=createAccountNumber()
+            this._accountNumber=createAccountNumber()
         }
      
         this.accountHolderName = accountHolderName;
-        this.balance=initialDeposit;
+        this._balance=initialDeposit;
+    }
+
+    get balance(){
+        return this._balance;
+    }
+
+   get accountNumber(){
+       return this._accountNumber;
+   }
+
+    get accountHolder(){
+        return this.accountHolderName;
+    }
+
+    set balance(amount){
+        return this._balance+amount;
     }
 }
 
