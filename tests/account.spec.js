@@ -15,6 +15,22 @@ test("success: creates account with valid data",()=>{
     expect(userAccount.accountNumber).toBeDefined()
 })
 
+test("correct amount is set for balance ",()=>{
+    let userAccount = new Account("Baris",10);
+    expect(userAccount._balance).toEqual(10)
+})
+
+test("correct account holder name is set for accountHolderName ",()=>{
+    let userAccount = new Account("Baris",10);
+    expect(userAccount.accountHolderName).toMatch("Baris")
+})
+
+test("accountNumber is set correctly",()=>{
+    let userAccount = new Account("Baris",10);
+    expect(userAccount.accountNumber).toBeTruthy()
+})
+
+
 test("invalid username",()=>{
     let userAccount = new Account(123,100);
     expect(consoleSpy).toBeCalledWith("Please provide a valid username and deposit")
@@ -33,4 +49,7 @@ test("invalid deposit negative integer",()=>{
     expect(consoleSpy).toBeCalledWith("Please provide a valid username and deposit")
   
 })
+
+
+
 
