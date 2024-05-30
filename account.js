@@ -40,9 +40,3 @@ module.exports = Account;
 module.exports.createAccount = createAccount;
 
 
-
-try {
-    
-} catch (error) {
-    
-}
