@@ -2,8 +2,7 @@ class Account {
     constructor(accountHolderName, initialDeposit) {
 
         if (typeof accountHolderName !== "string" || typeof initialDeposit !=="number" || initialDeposit <= 0) {
-            const invalidValue = ("Please provide a valid username and deposit");
-            console.log(invalidValue);
+            throw new Error ("Please provide a valid username and deposit");
         } else{
             this._accountNumber=createAccountNumber();
             this.accountHolderName = accountHolderName;
@@ -11,7 +10,7 @@ class Account {
         }
      
         function createAccountNumber() {
-            return + Math.floor(Math.random() * 1000000);
+            return Math.floor(Math.random() * 1000000);
         }
     }
 
@@ -39,3 +38,11 @@ function createAccount(accountHolderName,initialDeposit){
 module.exports = Account;
 
 module.exports.createAccount = createAccount;
+
+
+
+try {
+    
+} catch (error) {
+    
+}

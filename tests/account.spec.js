@@ -1,14 +1,6 @@
 const Account = require("../account")
 const {createAccount} = require("../account")
 
-beforeEach(() => {
-    consoleSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
-});
-
-afterEach(() => {
-    consoleSpy.mockRestore();
-});
-
 test("success: creates account with valid data",()=>{
     let userAccount = new Account("testAccount",100);
     expect(userAccount.accountHolderName).toBe("testAccount")
@@ -44,19 +36,28 @@ test("createAccount function works as expected", () => {
     expect(account.balance).toBe(50); 
 });
 
+
+//Commented test fails because: createAccount(100, 100) is called immediately, and if it throws an error, the error is thrown before Jest can apply the toThrow matcher. 
+//The expect statement never gets executed because the error occurs outside of Jest's error handling context.
+//Test after this one is the correct usage
+// test("invalid username",()=>{
+//     //expect(()=>{new new Account(123,100)}).toThrow("Please provide a valid username and deposit");
+//     expect(createAccount(100,100)).toThrow("Please provide a valid username and deposit");
+// })
+
+//why wrap createAccount() function call to arrow function?
+// By wrapping the createAccount(100, 100) call inside an arrow function, you ensure that the function is not executed immediately. 
+// Jest will then call the function and correctly catch and verify the error.
 test("invalid username",()=>{
-    let userAccount = new Account(123,100);
-    expect(consoleSpy).toBeCalledWith("Please provide a valid username and deposit")
+    expect(()=>{createAccount(100,100)}).toThrow("Please provide a valid username and deposit");
 })
 
 test("invalid deposit 0",()=>{
-    let userAccount = new Account("Baris",0);
-    expect(consoleSpy).toBeCalledWith("Please provide a valid username and deposit")
+    expect(()=>{createAccount("test",0)}).toThrow("Please provide a valid username and deposit");
 })
 
 test("invalid deposit negative integer",()=>{
-    let userAccount = new Account("Baris",-10);
-    expect(consoleSpy).toBeCalledWith("Please provide a valid username and deposit")
+    expect(()=>{createAccount("test",-10)}).toThrow("Please provide a valid username and deposit");
 })
 
 
