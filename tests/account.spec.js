@@ -74,3 +74,10 @@ test("set balance method",()=>{
     testAccount.balance=100
     expect(testAccount.balance).toBe(300)
 })
+
+
+test("set name method",()=>{
+    let testAccount = createAccount("test",200)
+    testAccount.accountHolder="user"
+    expect(testAccount.accountHolderName).toBe("user")
+})

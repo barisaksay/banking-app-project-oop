@@ -30,6 +30,11 @@ class Account {
         return this._balance+=amount;
     }
 
+    set accountHolder(newName){
+        return this.accountHolderName = newName;
+ 
+    }
+
 }
 
 function createAccount(accountHolderName,initialDeposit){
