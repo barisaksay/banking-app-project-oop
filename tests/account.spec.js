@@ -1,3 +1,4 @@
+const { toBeExtensible } = require("jest-extended");
 const Account = require("../account")
 const {createAccount} = require("../account")
 
@@ -61,3 +62,15 @@ test("invalid deposit negative integer",()=>{
     expect(()=>{createAccount("test",-10)}).toThrow("Please provide a valid username and deposit");
 })
 
+//getter setter tests;
+
+test("get balance method",()=>{
+    let testAccount = createAccount("test",200)
+    expect(testAccount.balance).toBe(200)
+})
+
+test("set balance method",()=>{
+    let testAccount = createAccount("test",200)
+    testAccount.balance=100
+    expect(testAccount.balance).toBe(300)
+})
