@@ -34,6 +34,7 @@ test("createAccount function works as expected", () => {
     const account = createAccount("test-account", 50);
     expect(account.accountHolder).toBe("test-account");
     expect(account.balance).toBe(50); 
+    expect(account._accountNumber).toBeTruthy()
 });
 
 
@@ -59,7 +60,4 @@ test("invalid deposit 0",()=>{
 test("invalid deposit negative integer",()=>{
     expect(()=>{createAccount("test",-10)}).toThrow("Please provide a valid username and deposit");
 })
-
-
-
 

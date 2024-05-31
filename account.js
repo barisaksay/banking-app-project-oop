@@ -27,7 +27,7 @@ class Account {
     }
 
     set balance(amount){
-        return this._balance+amount;
+        return this._balance+=amount;
     }
 }
 
