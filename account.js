@@ -26,15 +26,14 @@ class Account {
         return this.accountHolderName;
     }
 
-    set balance(amount){
-        return this._balance+=amount;
-    }
-
     set accountHolder(newName){
         return this.accountHolderName = newName;
  
     }
-
+    addBalance(amount){
+        this._balance+=amount;
+        return `You have succesfully added ${amount} USD to your account. Your current balance is ${this._balance}`;
+}
 }
 
 function createAccount(accountHolderName,initialDeposit){
