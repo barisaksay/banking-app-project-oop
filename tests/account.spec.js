@@ -74,3 +74,9 @@ test("set name method",()=>{
     testAccount.accountHolder="user"
     expect(testAccount.accountHolderName).toBe("user")
 })
+
+test("addBalance with positive integer",()=>{
+    let testAccount = createAccount("test",200)
+    testAccount.addBalance(50);
+    expect(testAccount.balance).toBe(250)
+})
