@@ -31,8 +31,13 @@ class Account {
  
     }
     addBalance(amount){
+        if(amount <= 0 || typeof amount !== 'number'){
+         return `Please enter a valid amount`;
+} else{
         this._balance+=amount;
         return `You have succesfully added ${amount} USD to your account. Your current balance is ${this._balance}`;
+        }
+        
 }
 }
 
