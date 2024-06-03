@@ -75,8 +75,25 @@ test("set name method",()=>{
     expect(testAccount.accountHolderName).toBe("user")
 })
 
+
+//addBalance functionality tests
 test("addBalance with positive integer",()=>{
     let testAccount = createAccount("test",200)
     testAccount.addBalance(50);
     expect(testAccount.balance).toBe(250)
+})
+
+test('cannot add invalid balance negative integer',()=>{
+    let testAccount = createAccount('test',100)
+    expect(testAccount.addBalance(-1)).toMatch("Please enter a valid amount")
+})
+
+test('cannot add invalid balance string input',()=>{
+    let testAccount = createAccount('test',100)
+    expect(testAccount.addBalance("one")).toMatch("Please enter a valid amount")
+})
+
+test('cannot add invalid balance input:0',()=>{
+    let testAccount = createAccount('test',100)
+    expect(testAccount.addBalance(0)).toMatch("Please enter a valid amount")
 })
