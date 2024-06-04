@@ -109,12 +109,29 @@ test('initial deposit is recorded in transactionHistory correctly',()=>{
 
 test('initial deposit date is recorded in transactionHistory correctly',()=>{
     let testAccount = createAccount('test',100)
-    expect(testAccount.transactionHistory[0].date).toBeTruthy()
+    expect(testAccount.transactionHistory[0].date).toBeValidDate()
 })
 
-test('addBalance call recorded ın transactionHistory ',()=>{
+test('addBalance call recorded in transactionHistory - amount ',()=>{
     let testAccount = createAccount('test',100)
     testAccount.addBalance(50)
     expect(testAccount.transactionHistory.length).toBe(2)
     expect(testAccount.transactionHistory[1].amount).toBe(50)
+})
+
+test('addBalance call recorded in transactionHistory - date ',()=>{
+    let testAccount = createAccount('test',100)
+    testAccount.addBalance(50)
+    expect(testAccount.transactionHistory.length).toBe(2)
+    expect(testAccount.transactionHistory[1].date).toBeValidDate()
+})
+
+test('transactionHistory records are objects',()=>{
+    let testAccount = createAccount('test',100)
+    expect(testAccount.transactionHistory[0]).toBeObject()
+})
+
+test('transactionHistory contains correct keys',()=>{
+    let testAccount = createAccount('test',100)
+    expect(testAccount.transactionHistory[0]).toContainAllKeys(["amount","date"])
 })
