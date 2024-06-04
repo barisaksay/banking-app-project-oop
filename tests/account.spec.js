@@ -97,3 +97,24 @@ test('cannot add invalid balance input:0',()=>{
     let testAccount = createAccount('test',100)
     expect(testAccount.addBalance(0)).toMatch("Please enter a valid amount")
 })
+
+//tests for transactionHistory
+
+test('initial deposit is recorded in transactionHistory correctly',()=>{
+    let testAccount = createAccount('test',100)
+
+    expect(testAccount.transactionHistory.length).toBe(1)
+    expect(testAccount.transactionHistory[0].amount).toBe(100)
+})
+
+test('initial deposit date is recorded in transactionHistory correctly',()=>{
+    let testAccount = createAccount('test',100)
+    expect(testAccount.transactionHistory[0].date).toBeTruthy()
+})
+
+test('addBalance call recorded ın transactionHistory ',()=>{
+    let testAccount = createAccount('test',100)
+    testAccount.addBalance(50)
+    expect(testAccount.transactionHistory.length).toBe(2)
+    expect(testAccount.transactionHistory[1].amount).toBe(50)
+})
