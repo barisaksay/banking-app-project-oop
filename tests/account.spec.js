@@ -76,26 +76,26 @@ test("set name method",()=>{
 })
 
 
-//addBalance functionality tests
-test("addBalance with positive integer",()=>{
+//addFunds functionality tests
+test("addFunds with positive integer",()=>{
     let testAccount = createAccount("test",200)
-    testAccount.addBalance(50);
+    testAccount.addFunds(50);
     expect(testAccount.balance).toBe(250)
 })
 
 test('cannot add invalid balance negative integer',()=>{
     let testAccount = createAccount('test',100)
-    expect(testAccount.addBalance(-1)).toMatch("Please enter a valid amount")
+    expect(testAccount.addFunds(-1)).toMatch("Please enter a valid amount")
 })
 
 test('cannot add invalid balance string input',()=>{
     let testAccount = createAccount('test',100)
-    expect(testAccount.addBalance("one")).toMatch("Please enter a valid amount")
+    expect(testAccount.addFunds("one")).toMatch("Please enter a valid amount")
 })
 
 test('cannot add invalid balance input:0',()=>{
     let testAccount = createAccount('test',100)
-    expect(testAccount.addBalance(0)).toMatch("Please enter a valid amount")
+    expect(testAccount.addFunds(0)).toMatch("Please enter a valid amount")
 })
 
 //tests for transactionHistory
@@ -112,16 +112,16 @@ test('initial deposit date is recorded in transactionHistory correctly',()=>{
     expect(testAccount.transactionHistory[0].date).toBeValidDate()
 })
 
-test('addBalance call recorded in transactionHistory - amount ',()=>{
+test('addFunds call recorded in transactionHistory - amount ',()=>{
     let testAccount = createAccount('test',100)
-    testAccount.addBalance(50)
+    testAccount.addFunds(50)
     expect(testAccount.transactionHistory.length).toBe(2)
     expect(testAccount.transactionHistory[1].amount).toBe(50)
 })
 
-test('addBalance call recorded in transactionHistory - date ',()=>{
+test('addFunds call recorded in transactionHistory - date ',()=>{
     let testAccount = createAccount('test',100)
-    testAccount.addBalance(50)
+    testAccount.addFunds(50)
     expect(testAccount.transactionHistory.length).toBe(2)
     expect(testAccount.transactionHistory[1].date).toBeValidDate()
 })

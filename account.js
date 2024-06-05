@@ -32,7 +32,7 @@ class Account {
         return this.accountHolderName = newName;
 
     }
-    addBalance(amount) {
+    addFunds(amount) {
         if (amount <= 0 || typeof amount !== 'number') {
             return "Please enter a valid amount";
         } else {
