@@ -42,6 +42,12 @@ class Account {
         }
 
     }
+
+    withdrawFunds(amount){
+        if(amount > this._balance){
+            throw new Error(`You do not have enough funds. Your available balance is ${this._balance}USD`);
+        }
+    }
 }
 
 function createAccount(accountHolderName, initialDeposit) {
