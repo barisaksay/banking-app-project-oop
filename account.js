@@ -37,15 +37,18 @@ class Account {
             return "Please enter a valid amount";
         } else {
             this._balance += amount;
-            this.transactionHistory.push({"amount":amount,"date":new Date()})
+            this.transactionHistory.push({"action":"deposit","amount":amount,"date":new Date()})
             return `You have succesfully added ${amount} USD to your account. Your current balance is ${this._balance} USD`;
         }
 
     }
 
     withdrawFunds(amount){
-        if(amount > this._balance){
+        if(amount > this._balance || amount <= 0 || typeof amount !== 'number'){
             throw new Error(`You do not have enough funds. Your available balance is ${this._balance}USD`);
+        } else {
+            this._balance -= amount;
+            this.transactionHistory.push({"action":"withdrawal" ,"amount":amount,"date":new Date()})
         }
     }
 }

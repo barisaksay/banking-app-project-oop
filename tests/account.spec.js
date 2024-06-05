@@ -135,3 +135,17 @@ test('transactionHistory contains correct keys',()=>{
     let testAccount = createAccount('test',100)
     expect(testAccount.transactionHistory[0]).toContainAllKeys(["amount","date"])
 })
+
+//tests for withdrawFunds
+test.only('withdrawFunds successful with positive int',()=>{
+    let testAccount = createAccount('test',100)
+    testAccount.withdrawFunds(40)
+    expect(testAccount._balance).toBe(60)
+})
+
+test.only('withdrawFunds successful with positive int',()=>{
+    let testAccount = createAccount('test',100)
+    let errorMessage = `You do not have enough funds. Your available balance is ${testAccount._balance}USD`;
+    expect(()=>{testAccount.withdrawFunds(-40)}).toThrow(errorMessage);
+
+})
