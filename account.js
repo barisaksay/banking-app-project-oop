@@ -8,7 +8,7 @@ class Account {
             this.accountHolderName = accountHolderName;
             this._balance = initialDeposit;
             this.transactionHistory=[];
-            this.transactionHistory.push({"amount":initialDeposit,"date":new Date()})
+            this.transactionHistory.push({"action":"deposit","amount":initialDeposit,"date":new Date()})
         }
 
         function createAccountNumber() {
@@ -44,9 +44,12 @@ class Account {
     }
 
     withdrawFunds(amount){
-        if(amount > this._balance || amount <= 0 || typeof amount !== 'number'){
+        if( amount <= 0 || typeof amount !== 'number'){
+            throw new Error("enter a valid amount");
+        } else if(amount > this._balance){
             throw new Error(`You do not have enough funds. Your available balance is ${this._balance}USD`);
-        } else {
+        }
+        else {
             this._balance -= amount;
             this.transactionHistory.push({"action":"withdrawal" ,"amount":amount,"date":new Date()})
         }
