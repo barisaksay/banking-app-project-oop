@@ -53,12 +53,8 @@ class Account {
     }
 }
 
-function createAccount(accountHolderName, initialDeposit) {
-    return new Account(accountHolderName, initialDeposit)
-}
+
 
 module.exports = Account;
-
-module.exports.createAccount = createAccount;
 
 
