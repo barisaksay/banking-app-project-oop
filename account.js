@@ -50,7 +50,17 @@ class Account {
         else {
             this._balance -= amount;
             this.transactionHistory.push({"action":"withdrawal" ,"amount":amount,"date":new Date()})
+            return `Withdrawal successful. Your available balance is ${this._balance}`
         }
+    }
+
+    createAccountStatement(){
+        return `Your statement for account ${this._accountNumber},
+        Account holder: ${this.accountHolderName},
+        Account created at: ${this.accountCreationDate},
+        Account balance: ${this.balance},
+        Transaction history: ${this.transactionHistory}
+        `
     }
 }
 
