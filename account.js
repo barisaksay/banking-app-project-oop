@@ -9,6 +9,7 @@ class Account {
             this._balance = initialDeposit;
             this.transactionHistory=[];
             this.transactionHistory.push({"action":"deposit","amount":initialDeposit,"date":new Date()})
+            this.accountCreationDate = new Date()
         }
 
     }

@@ -6,6 +6,7 @@ test("success: creates account with valid data",()=>{
     expect(userAccount.accountHolderName).toBe("testAccount")
     expect(userAccount.balance).toBe(100);
     expect(userAccount.accountNumber).toBeDefined()
+    expect(userAccount.accountCreationDate).toBeTruthy()
 })
 
 test("correct amount is set for balance ",()=>{
