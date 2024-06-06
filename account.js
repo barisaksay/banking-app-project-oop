@@ -4,16 +4,13 @@ class Account {
         if (typeof accountHolderName !== "string" || typeof initialDeposit !== "number" || initialDeposit <= 0) {
             throw new Error("Please provide a valid username and deposit");
         } else {
-            this._accountNumber = createAccountNumber();
+            this._accountNumber = Math.floor(Math.random() * 1000000);;
             this.accountHolderName = accountHolderName;
             this._balance = initialDeposit;
             this.transactionHistory=[];
             this.transactionHistory.push({"action":"deposit","amount":initialDeposit,"date":new Date()})
         }
 
-        function createAccountNumber() {
-            return Math.floor(Math.random() * 1000000);
-        }
     }
 
     get balance() {
