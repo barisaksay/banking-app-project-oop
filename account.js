@@ -54,13 +54,19 @@ class Account {
         }
     }
 
-    createAccountStatement(){
-        return `Your statement for account ${this._accountNumber},
-        Account holder: ${this.accountHolderName},
-        Account created at: ${this.accountCreationDate},
-        Account balance: ${this.balance},
-        Transaction history: ${this.transactionHistory}
-        `
+    accountSummary(){
+        // return `Your account summary for account ${this._accountNumber},
+        // Account balance: ${this.balance},
+        // Transaction history: ${this.transactionHistory}
+        // `
+        for (let i = 0; i < this.transactionHistory.length; i++) {
+            const transactionType = this.transactionHistory[i].action;
+            const transactionAmount = this.transactionHistory[i].amount;
+            const transactionDate = this.transactionHistory[i].date;
+
+            console.log(transactionType,transactionAmount,transactionDate)
+
+        }
     }
 }
 
