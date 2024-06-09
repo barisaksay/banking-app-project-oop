@@ -62,11 +62,11 @@ accountSummary() {
 
     // Loop through the transaction history and add each transaction to the summary
     for (let i = 0; i < this.transactionHistory.length; i++) {
-        const transactionType = this.transactionHistory[i].action;
-        const transactionAmount = this.transactionHistory[i].amount;
-        const transactionDate = this.transactionHistory[i].date;
+         let transactionAction = this.transactionHistory[i].action;
+         let transactionAmount= this.transactionHistory[i].amount;
+         let transactionHistory=this.transactionHistory[i].date;
 
-        summary += `- ${transactionType} of $${transactionAmount} on ${transactionDate}`;
+        summary += `- ${transactionAction} of $${transactionAmount} on ${transactionHistory}`;
     }
 
     return summary;

@@ -153,12 +153,3 @@ test('withdrawFunds error with amount 0',()=>{
     let errorMessage ="enter a valid amount";
     expect(()=>{testAccount.withdrawFunds(0)}).toThrow(errorMessage);
 })
-
-test.skip('accountSummary works as expected',()=>{
-    let testAccount = new Account('test',100)
-    testAccount.addFunds(20)
-    testAccount.withdrawFunds(70)
-    testAccount.withdrawFunds(5)
-    testAccount.addFunds(24)
-    testAccount.accountSummary()
-})
