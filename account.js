@@ -54,21 +54,23 @@ class Account {
         }
     }
 
-    accountSummary(){
-        // return `Your account summary for account ${this._accountNumber},
-        // Account balance: ${this.balance},
-        // Transaction history: ${this.transactionHistory}
-        // `
-        for (let i = 0; i < this.transactionHistory.length; i++) {
-            const transactionType = this.transactionHistory[i].action;
-            const transactionAmount = this.transactionHistory[i].amount;
-            const transactionDate = this.transactionHistory[i].date;
+accountSummary() {
+    // Create a summary string with account details
+    let summary = `Your account summary for account ${this._accountNumber}:`;
+    summary += `Account balance: ${this.balance}`;
+    summary += `Transaction history:`;
 
-            console.log(transactionType,transactionAmount,transactionDate)
+    // Loop through the transaction history and add each transaction to the summary
+    for (let i = 0; i < this.transactionHistory.length; i++) {
+        const transactionType = this.transactionHistory[i].action;
+        const transactionAmount = this.transactionHistory[i].amount;
+        const transactionDate = this.transactionHistory[i].date;
 
-        }
+        summary += `- ${transactionType} of $${transactionAmount} on ${transactionDate}`;
     }
-}
+
+    return summary;
+} }
 
 
 

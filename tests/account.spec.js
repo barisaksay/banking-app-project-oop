@@ -154,14 +154,11 @@ test('withdrawFunds error with amount 0',()=>{
     expect(()=>{testAccount.withdrawFunds(0)}).toThrow(errorMessage);
 })
 
-// test.only('accountSummary function works as expected',()=>{
-//     let testAccount = new Account('test',100)
-//     testAccount.addFunds(50)
-//     testAccount.withdrawFunds(80)
-//     testAccount.withdrawFunds(20)
-//     testAccount.addFunds(30)
-//     expect(testAccount.accountSummary()).toBe(`Your account summary for account ${testAccount._accountNumber},
-//         Account balance: ${testAccount.balance},
-//         Transaction history: ${testAccount.transactionHistory}
-//         `)
-// })
+test.skip('accountSummary works as expected',()=>{
+    let testAccount = new Account('test',100)
+    testAccount.addFunds(20)
+    testAccount.withdrawFunds(70)
+    testAccount.withdrawFunds(5)
+    testAccount.addFunds(24)
+    testAccount.accountSummary()
+})
