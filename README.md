@@ -13,9 +13,9 @@ The system allows for the creation of user accounts, deposits, withdrawals, and 
 - Account Summary: Generate a summary of account details including balance and transaction history.
 
 ## Technologies Used
-Programming Language: JavaScript (ES6+)
-Testing Framework: Jest
-OOP Concepts: Encapsulation, Constructors, Getters, Setters, Methods, Abstraction
+- Programming Language: JavaScript (ES6+)
+- Testing Framework: Jest
+- OOP Concepts: Encapsulation, Constructors, Getters, Setters, Methods, Abstraction
 
 ## Prerequisites
 `Node.js`
