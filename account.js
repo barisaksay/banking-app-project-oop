@@ -27,7 +27,13 @@ class Account {
     }
 
     set accountHolder(newName) {
-        return this.accountHolderName = newName;
+             if (typeof newName !== "string"){
+                    throw new Error("Please provide a valid username");
+             } else{
+                 return this.accountHolderName = newName;
+}
+        
+        
 
     }
     addFunds(amount) {
