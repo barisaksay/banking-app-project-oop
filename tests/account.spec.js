@@ -61,10 +61,12 @@ test("set name method",()=>{
     expect(testAccount.accountHolderName).toBe("user")
 })
 
-test("set name method with non-string input",()=>{
-    let testAccount = new Account("test",200)
-    expect(testAccount.accountHolder=123).toThrow("Please provide a valid username")
-})
+test("set name method with non-string input", () => {
+    let testAccount = new Account("test", 200);
+    expect(() => {
+        testAccount.accountHolder = 123;
+    }).toThrow("Please provide a valid username");
+});
 
 //addFunds functionality tests
 test("addFunds with positive integer",()=>{
