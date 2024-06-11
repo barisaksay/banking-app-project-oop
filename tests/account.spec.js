@@ -63,7 +63,7 @@ test("set name method",()=>{
 
 test("set name method with non-string input",()=>{
     let testAccount = new Account("test",200)
-    expect(testAccount.accountHolder=123)..toThrow("Please provide a valid username")
+    expect(testAccount.accountHolder=123).toThrow("Please provide a valid username")
 })
 
 //addFunds functionality tests
