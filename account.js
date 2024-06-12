@@ -78,6 +78,9 @@ accountSummary() {
     return summary;
 } }
 
+//Note: implement a function eg: showDeposits() which will iterate through transactionHistory and return only deposits.
+
+//Note: implement a function eg: showWithdrawals() which will iterate through transactionHistory and return only withdrawals.
 
 
 module.exports = Account;
