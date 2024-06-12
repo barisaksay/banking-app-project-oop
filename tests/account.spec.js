@@ -172,3 +172,16 @@ test('getDeposits works',()=>{
 
 // test('getDeposits does not contain withdrawals',()=>{
 // })
+
+
+
+//getWithdrawals test
+test('getWithdrawals works',()=>{
+    let testAccount = new Account('test',100)
+    testAccount.withdrawFunds(50)
+    expect(testAccount.getWithdrawals()).toBeArrayOfSize(1)
+    expect(testAccount.getWithdrawals()).toIncludeAnyMembers(testAccount.transactionHistory)
+})
+
+// test('getWithdrawals does not contain deposits',()=>{
+// })
