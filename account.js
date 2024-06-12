@@ -88,7 +88,18 @@ accountSummary() {
 
     return deposits;
  }
+
+ getWithdrawals(){
+    let withdrawals=[]
+    this.transactionHistory.forEach((item)=>{
+        if(item.action=="withdrawal"){
+            withdrawals.push(item);
+        }
+    })
+
+    return withdrawals;
  
+} 
 }
 
 
