@@ -76,9 +76,18 @@ accountSummary() {
     }
 
     return summary;
-} }
+}
 
-//Note: implement a function eg: showDeposits() which will iterate through transactionHistory and return only deposits.
+ getDeposits(){
+    this.transactionHistory.map((item)=>{
+        if(item.action=="deposit"){
+            console.log(item);
+        }
+    })
+ }
+ 
+}
+
 
 //Note: implement a function eg: showWithdrawals() which will iterate through transactionHistory and return only withdrawals.
 
