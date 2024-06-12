@@ -38,7 +38,7 @@ class Account {
     }
     addFunds(amount) {
         if (amount <= 0 || typeof amount !== 'number') {
-            return "Please enter a valid amount";
+            throw new Error("Please enter a valid amount") ;
         } else {
             this._balance += amount;
             this.transactionHistory.push({ "action": "deposit", "amount": amount, "date": new Date() })

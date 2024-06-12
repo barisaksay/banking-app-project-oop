@@ -77,17 +77,17 @@ test("addFunds with positive integer",()=>{
 
 test('cannot add invalid balance negative integer',()=>{
     let testAccount = new Account('test',100)
-    expect(testAccount.addFunds(-1)).toMatch("Please enter a valid amount")
+    expect(()=>{testAccount.addFunds(-1)}).toThrow("Please enter a valid amount");
 })
 
 test('cannot add invalid balance string input',()=>{
     let testAccount = new Account('test',100)
-    expect(testAccount.addFunds("one")).toMatch("Please enter a valid amount")
+    expect(()=>{testAccount.addFunds("one")}).toThrow("Please enter a valid amount");
 })
 
 test('cannot add invalid balance input:0',()=>{
     let testAccount = new Account('test',100)
-    expect(testAccount.addFunds(0)).toMatch("Please enter a valid amount")
+    expect(()=>{testAccount.addFunds(0)}).toThrow("Please enter a valid amount");
 })
 
 //tests for transactionHistory
