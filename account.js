@@ -79,11 +79,14 @@ accountSummary() {
 }
 
  getDeposits(){
-    this.transactionHistory.map((item)=>{
+    let deposits=[]
+    this.transactionHistory.forEach((item)=>{
         if(item.action=="deposit"){
-            console.log(item);
+            deposits.push(item);
         }
     })
+
+    return deposits;
  }
  
 }
