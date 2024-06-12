@@ -159,3 +159,16 @@ test('withdrawFunds error with amount 0',()=>{
     let errorMessage ="enter a valid amount";
     expect(()=>{testAccount.withdrawFunds(0)}).toThrow(errorMessage);
 })
+
+
+//getDeposits test
+test('getDeposits works',()=>{
+    let testAccount = new Account('test',100)
+    testAccount.addFunds(50)
+    expect(testAccount.getDeposits()).toBeArrayOfSize(2)
+    expect(testAccount.getDeposits()).toIncludeAnyMembers(testAccount.transactionHistory)
+})
+
+
+// test('getDeposits does not contain withdrawals',()=>{
+// })
