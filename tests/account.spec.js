@@ -1,72 +1,75 @@
 const { toBeExtensible } = require("jest-extended");
 const Account = require("../account")
 
-test("success: creates account with valid data",()=>{
-    let userAccount = new Account("testAccount",100);
-    expect(userAccount.accountHolderName).toBe("testAccount")
+describe("Account class tests",()=>{
+    // Constructor Tests
+    test("should create an account with valid inputs",()=>{
+    let userAccount = new Account("Robert Jr",100);
+    expect(userAccount.accountHolderName).toBe("Robert")
     expect(userAccount.balance).toBe(100);
+    expect(userAccount.transactionHistory.length).toBe(1);
     expect(userAccount.accountNumber).toBeDefined()
-    expect(userAccount.accountCreationDate).toBeTruthy()
+    expect(userAccount.accountCreationDate).toBeInstanceOf(Date)
 })
-
-test("correct amount is set for balance ",()=>{
-    let userAccount = new Account("Baris",10);
-    expect(userAccount._balance).toEqual(10)
-})
-
-test("correct account holder name is set for accountHolderName ",()=>{
-    let userAccount = new Account("Baris",10);
-    expect(userAccount.accountHolderName).toMatch("Baris")
-})
-
-test("accountNumber is set correctly",()=>{
-    let userAccount = new Account("Baris",10);
-    expect(userAccount.accountNumber).toBeTruthy()
-})
-
-
-//Commented test fails because: createAccount(100, 100) is called immediately, and if it throws an error, the error is thrown before Jest can apply the toThrow matcher. 
-//The expect statement never gets executed because the error occurs outside of Jest's error handling context.
-//Test after this one is the correct usage
-// test("invalid username",()=>{
-//     //expect(()=>{new new Account(123,100)}).toThrow("Please provide a valid username and deposit");
-//     expect(createAccount(100,100)).toThrow("Please provide a valid username and deposit");
-// })
-
-//why wrap createAccount() function call to arrow function?
+    //why wrap new Account() to arrow function?
 // By wrapping the createAccount(100, 100) call inside an arrow function, you ensure that the function is not executed immediately. 
 // Jest will then call the function and correctly catch and verify the error.
-test("invalid username",()=>{
-    expect(()=>{new Account(100,100)}).toThrow("Please provide a valid username and deposit");
+    test("should throw an error if accountHolderName is not a string",()=>{
+    expect(()=>{new Account(999,100)}).toThrow("Please provide a valid username and deposit");
+})
+    
+test("should throw an error if initialDeposit is 0",()=>{
+    expect(()=>{new Account("Robert Jr",0)}).toThrow("Please provide a valid username and deposit");
+})
+    test("should throw an error if initialDeposit is negative integer",()=>{
+    expect(()=>{new Account("Robert Jr",-1)}).toThrow("Please provide a valid username and deposit");
 })
 
-test("invalid deposit 0",()=>{
-    expect(()=>{new Account("test",0)}).toThrow("Please provide a valid username and deposit");
+     test("should throw an error if initialDeposit is not a number: string",()=>{
+    expect(()=>{new Account("Robert Jr","ten")}).toThrow("Please provide a valid username and deposit");
+})
+     test("should throw an error if initialDeposit is not a number: boolean",()=>{
+    expect(()=>{new Account("Robert Jr",true)}).toThrow("Please provide a valid username and deposit");
 })
 
-test("invalid deposit negative integer",()=>{
-    expect(()=>{new Account("test",-10)}).toThrow("Please provide a valid username and deposit");
-})
+    //Getter tests;
 
-//getter setter tests;
-
-test("get balance method",()=>{
-    let testAccount = new Account("test",200)
+    test("should return correct balance",()=>{
+    let testAccount = new Account("Robert Jr",200)
     expect(testAccount.balance).toBe(200)
 })
+     test('should return correct account number', () => {
+        const account = new Account('Robert Jr', 1000);
+        expect(account.accountNumber).toBeGreaterThanOrEqual(0);
+        expect(account.accountNumber).toBeLessThan(1000000);
+    });
 
-test("set name method",()=>{
-    let testAccount = new Account("test",200)
-    testAccount.accountHolder="user"
-    expect(testAccount.accountHolderName).toBe("user")
-})
+     test('should return correct account holder name', () => {
+        const account = new Account('Robert Jr', 1000);
+        expect(account.accountHolderName).toBe('Robert Jr');
+    });
+    
+    // Setter Tests
+    test('should correctly update the account holder name', () => {
+        const account = new Account('Robert Jr', 1000);
+        account.accountHolder = 'John Doe';
+        expect(account.accountHolderName).toBe('John Doe');
+    });
 
-test("set name method with non-string input", () => {
-    let testAccount = new Account("test", 200);
+    test('should throw an error if new name is not a string', () => {
+        const account = new Account('Robert Jr', 1000);
+        expect(() => account.accountHolderName = 123).toThrow('Please provide a valid username');
+    });
+
+    test("set name method with non-string input", () => {
+    let testAccount = new Account("Robert Jr", 200);
     expect(() => {
         testAccount.accountHolder = 123;
     }).toThrow("Please provide a valid username");
 });
+
+})
+
 
 //addFunds functionality tests
 test("addFunds with positive integer",()=>{
