@@ -5,7 +5,7 @@ describe("Account class tests",()=>{
     // Constructor Tests
     test("should create an account with valid inputs",()=>{
     let userAccount = new Account("Robert Jr",100);
-    expect(userAccount.accountHolderName).toBe("Robert")
+    expect(userAccount.accountHolderName).toBe("Robert Jr")
     expect(userAccount.balance).toBe(100);
     expect(userAccount.transactionHistory.length).toBe(1);
     expect(userAccount.accountNumber).toBeDefined()
@@ -58,20 +58,10 @@ test("should throw an error if initialDeposit is 0",()=>{
 
     test('should throw an error if new name is not a string', () => {
         const account = new Account('Robert Jr', 1000);
-        expect(() => account.accountHolderName = 123).toThrow('Please provide a valid username');
+       expect(()=>account.accountHolder=123).toThrow('Please provide a valid username');
     });
 
-    test("set name method with non-string input", () => {
-    let testAccount = new Account("Robert Jr", 200);
-    expect(() => {
-        testAccount.accountHolder = 123;
-    }).toThrow("Please provide a valid username");
-});
-
-})
-
-
-//addFunds functionality tests
+    //addFunds method tests
 test("addFunds with positive integer",()=>{
     let testAccount = new Account("test",200)
     testAccount.addFunds(50);
@@ -93,18 +83,18 @@ test('cannot add invalid balance input:0',()=>{
     expect(()=>{testAccount.addFunds(0)}).toThrow("Please enter a valid amount");
 })
 
-//tests for transactionHistory
+})
+
+
+//transactionHistory tests
 
 test('initial deposit is recorded in transactionHistory correctly',()=>{
     let testAccount = new Account('test',100)
 
     expect(testAccount.transactionHistory.length).toBe(1)
     expect(testAccount.transactionHistory[0].amount).toBe(100)
-})
-
-test('initial deposit date is recorded in transactionHistory correctly',()=>{
-    let testAccount = new Account('test',100)
     expect(testAccount.transactionHistory[0].date).toBeValidDate()
+
 })
 
 test('addFunds call recorded in transactionHistory - amount ',()=>{
