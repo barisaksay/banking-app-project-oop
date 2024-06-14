@@ -61,12 +61,10 @@ class Account {
     }
 
     accountSummary() {
-        // Create a summary string with account details
         let summary = `Your account summary for account ${this._accountNumber}:`;
         summary += `Account balance: ${this.balance}`;
         summary += `Transaction history:`;
 
-        // Loop through the transaction history and add each transaction to the summary
         for (let i = 0; i < this.transactionHistory.length; i++) {
             let transactionAction = this.transactionHistory[i].action;
             let transactionAmount = this.transactionHistory[i].amount;
@@ -86,10 +84,6 @@ class Account {
         return this.transactionHistory.filter((item) => item.action == "withdrawal")
     }
 }
-
-
-//Note: implement a function eg: showWithdrawals() which will iterate through transactionHistory and return only withdrawals.
-
 
 module.exports = Account;
 
