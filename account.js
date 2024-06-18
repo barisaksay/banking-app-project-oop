@@ -49,7 +49,7 @@ class Account {
 
     withdrawFunds(amount) {
         if (amount <= 0 || typeof amount !== 'number') {
-            throw new Error("enter a valid amount");
+            throw new Error("Enter a valid amount");
         } else if (amount > this._balance) {
             throw new Error(`You do not have enough funds. Your available balance is ${this._balance}USD`);
         }
