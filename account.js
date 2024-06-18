@@ -8,6 +8,8 @@ class Account {
             this.accountHolderName = accountHolderName;
             this._balance = initialDeposit;
             this.transactionHistory = [];
+
+            //implement Intl.DateTimeFormat for new Date() instances, update tests if needed.
             this.transactionHistory.push({ "action": "deposit", "amount": initialDeposit, "date": new Date() })
             this.accountCreationDate = new Date()
         }
@@ -86,5 +88,7 @@ class Account {
 }
 
 module.exports = Account;
+
+
 
 
