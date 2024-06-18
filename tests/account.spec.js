@@ -136,20 +136,20 @@ test('withdrawFunds error with  amount>balance',()=>{
 
 test('withdrawFunds error with  negative int',()=>{
     let testAccount = new Account('test',100)
-    let errorMessage ="enter a valid amount";
+    let errorMessage ="Enter a valid amount";
     expect(()=>{testAccount.withdrawFunds(-1)}).toThrow(errorMessage);
 })
 
 
 test('withdrawFunds error with  string',()=>{
     let testAccount = new Account('test',100)
-    let errorMessage ="enter a valid amount";
+    let errorMessage ="Enter a valid amount";
     expect(()=>{testAccount.withdrawFunds("two")}).toThrow(errorMessage);
 })
 
 test('withdrawFunds error with amount 0',()=>{
     let testAccount = new Account('test',100)
-    let errorMessage ="enter a valid amount";
+    let errorMessage ="Enter a valid amount";
     expect(()=>{testAccount.withdrawFunds(0)}).toThrow(errorMessage);
 })
 
