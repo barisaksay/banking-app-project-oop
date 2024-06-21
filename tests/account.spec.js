@@ -2,9 +2,9 @@ const { toBeExtensible } = require("jest-extended");
 const Account = require("../account")
 
 describe("Account class tests",()=>{
-    const validAccountHolderName = "Jack";
-    const validBalance = 100;
-    const invalidBalanceString = "fifty";
+    let validAccountHolderName = "Jack";
+    let validBalance = 100;
+    let invalidBalanceString = "fifty";
     
     // Constructor Tests
     test("should create an account with valid inputs",()=>{
