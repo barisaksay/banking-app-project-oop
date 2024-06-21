@@ -3,6 +3,11 @@ const Account = require("../account")
 let validAccountHolderName = "Jack";
 let validBalance = 100;
 let invalidBalanceString = "fifty";
+let invalidBalanceZero=0
+let invalidBalanceNegative= -1
+let invalidBalanceBoolean=true;
+let invalidValueOnCreationError="Please provide a valid username and deposit"
+let setNameInvalidUsernameError="Please provide a valid username"
 
 describe("Account class tests",()=>{
     
@@ -20,21 +25,21 @@ describe("Account class tests",()=>{
 // By wrapping the createAccount(100, 100) call inside an arrow function, you ensure that the function is not executed immediately. 
 // Jest will then call the function and correctly catch and verify the error.
     test("should throw an error if accountHolderName is not a string",()=>{
-    expect(()=>{new Account(999,100)}).toThrow("Please provide a valid username and deposit");
+    expect(()=>{new Account(999,100)}).toThrow(invalidValueOnCreationError);
 })
     
 test("should throw an error if initialDeposit is 0",()=>{
-    expect(()=>{new Account(validAccountHolderName,0)}).toThrow("Please provide a valid username and deposit");
+    expect(()=>{new Account(validAccountHolderName,invalidBalanceZero)}).toThrow(invalidValueOnCreationError);
 })
     test("should throw an error if initialDeposit is negative integer",()=>{
-    expect(()=>{new Account(validAccountHolderName,-1)}).toThrow("Please provide a valid username and deposit");
+    expect(()=>{new Account(validAccountHolderName,invalidBalanceNegative)}).toThrow(invalidValueOnCreationError);
 })
 
      test("should throw an error if initialDeposit is not a number: string",()=>{
-    expect(()=>{new Account(validAccountHolderName,"ten")}).toThrow("Please provide a valid username and deposit");
+    expect(()=>{new Account(validAccountHolderName,invalidBalanceString)}).toThrow(invalidValueOnCreationError);
 })
      test("should throw an error if initialDeposit is not a number: boolean",()=>{
-    expect(()=>{new Account(validAccountHolderName,true)}).toThrow("Please provide a valid username and deposit");
+    expect(()=>{new Account(validAccountHolderName,invalidBalanceBoolean)}).toThrow(invalidValueOnCreationError);
 })
 
     //Getter tests;
@@ -63,7 +68,7 @@ test("should throw an error if initialDeposit is 0",()=>{
 
     test('should throw an error if new name is not a string', () => {
         const account = new Account(validAccountHolderName, validBalance);
-       expect(()=>account.accountHolder=123).toThrow('Please provide a valid username');
+       expect(()=>account.accountHolder=123).toThrow(setNameInvalidUsernameError);
     });
 
     //addFunds method tests
