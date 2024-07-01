@@ -9,9 +9,8 @@ class Account {
             this._balance = initialDeposit;
             this.transactionHistory = [];
 
-            //implement Intl.DateTimeFormat for new Date() instances, update tests if needed.
-            this.transactionHistory.push({ "action": "deposit", "amount": initialDeposit, "date": new Date() })
-            this.accountCreationDate = new Date()
+            this.transactionHistory.push({ "action": "deposit", "amount": initialDeposit, "date": new Intl.DateTimeFormat("en-UK").format() })
+            this.accountCreationDate = new Intl.DateTimeFormat("en-UK").format() 
         }
 
     }
@@ -43,7 +42,7 @@ class Account {
             throw new Error("Please enter a valid amount") ;
         } else {
             this._balance += amount;
-            this.transactionHistory.push({ "action": "deposit", "amount": amount, "date": new Date() })
+            this.transactionHistory.push({ "action": "deposit", "amount": amount, "date": new Intl.DateTimeFormat("en-UK").format() })
             return `You have succesfully added ${amount} USD to your account. Your current balance is ${this._balance} USD`;
         }
 
@@ -57,7 +56,7 @@ class Account {
         }
         else {
             this._balance -= amount;
-            this.transactionHistory.push({ "action": "withdrawal", "amount": amount, "date": new Date() })
+            this.transactionHistory.push({ "action": "withdrawal", "amount": amount, "date": new Intl.DateTimeFormat("en-UK").format() })
             return `Withdrawal successful. Your available balance is ${this._balance}`
         }
     }
