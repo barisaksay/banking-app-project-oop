@@ -16,7 +16,7 @@ describe("Account class tests",()=>{
     
     
     // Constructor Tests
-    test("should create an account with valid inputs",()=>{
+    test.only("should create an account with valid inputs",()=>{
     let userAccount = new Account(testData.validAccountHolderName,testData.validBalance);
     expect(userAccount.accountHolderName).toBe("Jack")
     expect(userAccount.balance).toBe(100);
