@@ -3,14 +3,6 @@ const testData = require ('../data.json')
 const { toBeExtensible } = require("jest-extended");
 
 const Account = require("../account")
-//let validAccountHolderName = "Jack";
-//let validBalance = 100;
-let invalidBalanceString = "fifty";
-let invalidBalanceZero=0
-let invalidBalanceNegative= -1
-let invalidBalanceBoolean=true;
-let invalidValueOnCreationError="Please provide a valid username and deposit"
-let setNameInvalidUsernameError="Please provide a valid username"
 
 describe("Account class tests",()=>{
     
@@ -27,19 +19,19 @@ describe("Account class tests",()=>{
     //why wrap new Account() to arrow function?
 // By wrapping the createAccount(100, 100) call inside an arrow function, you ensure that the function is not executed immediately. 
 // Jest will then call the function and correctly catch and verify the error.
-    test("should throw an error if accountHolderName is not a string",()=>{
-    expect(()=>{new Account(999,100)}).toThrow(invalidValueOnCreationError);
+    test.only("should throw an error if accountHolderName is not a string",()=>{
+    expect(()=>{new Account(testData.invalidAccountHolderName,testData.validBalance)}).toThrow(testData.invalidValueOnCreationError);
 })
     
-test("should throw an error if initialDeposit is 0",()=>{
-    expect(()=>{new Account(validAccountHolderName,invalidBalanceZero)}).toThrow(invalidValueOnCreationError);
+test.only("should throw an error if initialDeposit is 0",()=>{
+    expect(()=>{new Account(testData.validAccountHolderName,testData.invalidBalanceZero)}).toThrow(testData.invalidValueOnCreationError);
 })
-    test("should throw an error if initialDeposit is negative integer",()=>{
-    expect(()=>{new Account(validAccountHolderName,invalidBalanceNegative)}).toThrow(invalidValueOnCreationError);
+    test.only("should throw an error if initialDeposit is negative integer",()=>{
+    expect(()=>{new Account(testData.validAccountHolderName,testData.invalidBalanceNegative)}).toThrow(testData.invalidValueOnCreationError);
 })
 
-     test("should throw an error if initialDeposit is not a number: string",()=>{
-    expect(()=>{new Account(validAccountHolderName,invalidBalanceString)}).toThrow(invalidValueOnCreationError);
+     test.only("should throw an error if initialDeposit is not a number: string",()=>{
+    expect(()=>{new Account(testData.validAccountHolderName,testData.invalidBalanceString)}).toThrow(testData.invalidValueOnCreationError);
 })
      test("should throw an error if initialDeposit is not a number: boolean",()=>{
     expect(()=>{new Account(validAccountHolderName,invalidBalanceBoolean)}).toThrow(invalidValueOnCreationError);
