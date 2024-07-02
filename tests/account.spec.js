@@ -1,7 +1,10 @@
+const testData = require ('../data.json')
+
 const { toBeExtensible } = require("jest-extended");
+
 const Account = require("../account")
-let validAccountHolderName = "Jack";
-let validBalance = 100;
+//let validAccountHolderName = "Jack";
+//let validBalance = 100;
 let invalidBalanceString = "fifty";
 let invalidBalanceZero=0
 let invalidBalanceNegative= -1
@@ -14,7 +17,7 @@ describe("Account class tests",()=>{
     
     // Constructor Tests
     test("should create an account with valid inputs",()=>{
-    let userAccount = new Account(validAccountHolderName,validBalance);
+    let userAccount = new Account(testData.validAccountHolderName,testData.validBalance);
     expect(userAccount.accountHolderName).toBe("Jack")
     expect(userAccount.balance).toBe(100);
     expect(userAccount.transactionHistory.length).toBe(1);
