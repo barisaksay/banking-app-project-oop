@@ -1,5 +1,6 @@
 {
  "validAccountHolderName": "Jack",
+ "invalidAccountHolderName": 123,
  "validBalance": 100,
  "invalidBalanceString" :"fifty",
  "invalidBalanceZero": 0,
