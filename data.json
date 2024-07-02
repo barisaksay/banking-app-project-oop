@@ -1,0 +1,10 @@
+{
+ "validAccountHolderName": "Jack",
+ "validBalance": 100,
+ "invalidBalanceString" :"fifty",
+ "invalidBalanceZero": 0,
+ "invalidBalanceNegative": -1,
+ "invalidBalanceBoolean": true,
+ "invalidValueOnCreationError": "Please provide a valid username and deposit",
+ "setNameInvalidUsernameError": "Please provide a valid username"
+}
