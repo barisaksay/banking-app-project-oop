@@ -5,7 +5,14 @@ const { toBeExtensible } = require("jest-extended");
 const Account = require("../account")
 
 describe("Account class tests",()=>{
-    
+
+    beforeEach(()=>{
+
+        //a beforeEach hook to be implemented with an if/else block:
+        //todo: add word "negative" to negative test cases which throw error.
+        //code will read the name of the test, if it detects "negative" inside, will use different logic for creation
+        //let userAccount = new Account(testData.validAccountHolderName,testData.validBalance);
+    })
     
     // Constructor Tests
     test.only("should create an account with valid inputs",()=>{
