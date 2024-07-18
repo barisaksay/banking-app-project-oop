@@ -7,12 +7,17 @@
   },
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "## Overview This project is a simple account management system implemented in JavaScript.  It demonstrates fundamental concepts of Object-Oriented Programming (OOP) such as encapsulation, abstraction, and the use of constructors, getters, setters, and methods.  The system allows for the creation of user accounts, deposits, withdrawals, and maintains a transaction history for each account.",
   "devDependencies": {
     "jest": "^29.7.0",
     "jest-extended": "^4.0.2"
   },
   "jest": {
-    "setupFilesAfterEnv": ["./testSetup.js"]
+    "setupFilesAfterEnv": [
+      "./testSetup.js"
+    ]
+  },
+  "directories": {
+    "test": "tests"
   }
 }
